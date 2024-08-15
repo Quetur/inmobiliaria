@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="Tu Inmobiliaria" content="
+  Agricultor
+Alambrador
+Albañil
+Alfarería
+Arenador
+Barbero
+Bachero
+Camarero
+Camionero
+Carpintero
+Chef
+Chofer
+Cocinero
+Colchonero
+Cosechador
+Electricista
+Maestra Particular
+Fontanero
+Fletero
+Grabado
+Herrero
+Jardinero
+Joyero
+Leñador
+Letrista
+Limpiabotas
+Maestro mayor de obras
+Manicura
+Matricero
+Mecánico
+Modista
+Molinero
+Orfebre
+Oberlok
+Pastor
+Peletería
+Coifiure
+Pescador
+Pintor
+Plomero
+Repostería
+Rotulista
+Sembrador
+Taxidermia
+Techista
+Tintorero
+Tornero
+Trabajadora doméstica
+Vendedor ambulante
+Yesero
+Zapatero
+Depiladora
+Podologa
+Profesora Ingles
+Profesora Frances
+Profesor Matematica
+Profesor Fisica
+Decorador Interior
+Paisajista
+Desarrollo Web
+Programador
+Testing
+" autor="Jesus Rosales" />
+
+  <title>Tu Inmobiliaria</title>
+  <link rel="icon" href="../img/logo.ico">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!-- <link rel="stylesheet" href="fonts.css">--> 
+  <script src="https://code.jquery.com/jquery-latest.js"></script>
+  <link href="/css/menu2.css" rel="stylesheet">
+  <!-- <link href="css/navbar.css" rel="stylesheet">-->
+
+</head>
+<header>
+  <nav>
+    <ul>
+
+      <li class="submenu">
+
+        <% if(user){ %>
+
+        <img style="width: 150px; background-color: white;" src="/img/<%= logo %>">
+        <input id="logo_inmo" value="<%= logo %>"hidden></input>
+        <input id="userid" value="<%= userid %>" hidden></input>
+        <input id="m_inmobili" hidden></input>
+        <input id="m_inmobiliCod"  value="<%= userid %>" hidden ></input>
+        <ul class="children">
+          <li><a href="/prop_nueva/<%= user.dni %>">Nueva Propiedad <span class="icon-dot"></span></a></li>
+          <!-- <li><a href="/editar/<%= user.dni %>">Calificar otro usuario<span class="icon-dot"></span></a></li>
+          <li><a href="/editar/<%= user.dni %>">Ver mis calificaciones<span class="icon-dot"></span></a></li>-->
+          <li><a href="/salir">Salir </a></li>
+
+          <!--<li><a href="/editar">Editar su perfil</a></li>-->
+        </ul>
+    
+      <% }  else{ %>
+        <input id="userid" value="0"  hidden></input>
+        <input id="m_inmobili" hidden></input>
+        <input id="m_inmobiliCod"  value="0" hidden  ></input>
+        <img style="width: 150px;" src="/img/logo.png">
+        <li><a href=""><span class="icon-mail"></span>Propiedades</a></li>
+        <li><a href=""><span class="icon-mail"></span>Subastas</a></li>
+        <li><a href=""><span class="icon-mail"></span>Tasaciones</a></li>
+        <li><a href=""><span class="icon-mail"></span>Emprendimientos</a></li>
+        </li>
+        <li><a href="/contacto"><span class="icon-mail"></span>Contacto</a></li>
+        <li style="width: 200px;"><a style="width: 200px;" href="/acercade"><span class="icon-mail"></span>Acerca de</a></li>
+        <li><a href="/login"> Ingresar </a></li>
+        <% } %>
+
+  </nav>
+
+
+
+
+  <script>
+    var contador = 1;
+    function main() {
+      $('.menu_bar').click(function() {
+        if (contador == 1) {
+          $('nav').animate({
+            left: '0'
+          });
+          contador = 0;
+        } else {
+          contador = 1;
+          $('nav').animate({
+            left: '-100%'
+          });
+        }
+      });
+
+      // Mostramos y ocultamos submenus
+      $('.submenu').click(function() {
+        $(this).children('.children').slideToggle();
+      });
+    }
+    $(document).ready(main);
+    dni = 0
+    mnombre = ""
+ 
+    if  (sessionStorage.getItem("dni")!==null){
+       document.getElementById('m_inmobili').value = sessionStorage.getItem("nombre");
+       document.getElementById('m_inmobiliCod').value = sessionStorage.getItem("dni");
+    }
+    console.log(" menu dni ", dni, mnombre)
+  
+    if ((dni > 1) && (mnombre.length == 0)) {
+      url = "/api/usuario/" + dni
+      console.log("entro menu2 servidor ->", url)
+      fetch(url)
+        .then(response => response.json())
+        .then((data) => {
+          console.log("menu data", data)
+          nombre = data[0].nombre
+        });
+    }
+    //console.log(" menu dni ", dni, nombre )
+  </script>
+</header>

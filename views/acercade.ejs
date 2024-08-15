@@ -1,0 +1,221 @@
+<%- include('includes/cabecera.ejs') %>
+<%- include('menu2.ejs') %>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<title>Tus Oficios</title>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="shadow-lg p-3 mb-5">
+      <div class="card">
+        <div class="card-header bg-primary text-white"><img src="/img/volver.png" height="20px"  width="30px"> 
+        <a href="/" type="button" style="color: white;"> Volver  </a></div>
+          <form id="enviosugerencia" action="/enviosugerencia" method="POST">
+            <table style="border-collapse: collapse; width: 100%; height: 243px;" border="1">
+              <tbody>
+              <tr style="height: 62px;">
+              <td style="width: 50%; height: 62px;">
+              <h1>Quienes somos</h1>
+              </td>
+              <td style="width: 50%; height: 62px;">&nbsp;</td>
+              </tr>
+              <tr style="height: 36px;">
+              <td style="width: 100%; height: 36px;" colspan="2"><strong>Somos una compa&ntilde;&iacute;a de consultor&iacute;a y servicios en tecnolog&iacute;as de la Informaci&oacute;n.</strong></td>
+              <td style="width: 50%; height: 36px;">&nbsp;</td>
+              </tr>
+              <tr style="height: 127px;">
+              <td style="height: 127px; width: 100%;" colspan="2">Somos una compa&ntilde;&iacute;a en&nbsp;<strong>tecnolog&iacute;as de la informaci&oacute;n con 30 a&ntilde;os de historia,</strong>&nbsp;nacida con el objetivo de desarrollar software a medida de las necesidades de cada negocio. Queremos ser reconocidos como&nbsp;<strong>socios tecnol&oacute;gicos</strong>&nbsp;de compa&ntilde;&iacute;as que demandan servicios y productos digitales de calidad, generando en estas empresas riqueza de manera sostenible y responsable, incluso desde un punto de vista social.</td>
+              </tr>
+              <tr style="height: 18px;">
+              <td style="height: 18px; width: 100%;" colspan="2">Y todo ello con un equipo de&nbsp;<strong>profesionales multidisciplinar apasionado</strong> , asegurando as&iacute; la digitalizaci&oacute;n de la cadena de valor de las compa&ntilde;&iacute;as mediante sistemas de informaci&oacute;n</td>
+              </tr>
+              </tbody>
+              </table>
+              </div>
+              </section> 
+              
+      </div>
+      </tr>
+      <!--
+      </form>
+     
+      <input id="envio" name="envio" class="w-100 btn btn-lg btn-primary"  value="Enviar" onclick="enviar()" ></input>
+      <br>
+     
+      <!--
+      <a style="margin-top: 10px;" href="/register" type="button" class="w-100 btn btn-lg btn-bd-primary">Registrarse</a>
+        -->
+      
+      </main>
+    </div>
+  </div>
+  </div>
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <% if(alert) { %>
+  <script>
+    Swal.fire({
+      title: '<%= alertTitle %>',
+      text: '<%= alertMessage %>',
+      icon: '<%= alertIcon %>',
+      showConfirmButton: '<%= showConfirmButton %>',
+      timer: '<%= timer %>', 
+    }).then(() => {
+      window.location = '/<%= ruta %>'
+    })
+  </script>
+  <% } %>
+
+
+
+
+
+  <script type="text/javascript">
+    console.log("inicio")
+
+
+    function enviar(){
+      if ((document.getElementById('nombre').value).length == 0 ) {
+          document.getElementById("nombre").focus();
+          Swal.fire({
+            icon: 'error',
+            title: ' Debes cargar un nombre',
+            text: 'cargue su nombre !!!...',
+            showConfirmButton: false,
+            timer: 2000,
+          });
+          return false;
+        }
+      else{
+        if ((document.getElementById('celular').value).length == 0 ) {
+
+          //console.log("cliente : "document.getElementById('combo_cliente').value);
+          document.getElementById("celular").focus();
+          Swal.fire({
+            icon: 'error',
+            title: ' celular vacio VACIO',
+            text: 'cargue su contraseña !!!...',
+            showConfirmButton: false,
+            timer: 2000,
+          });
+          return false;
+
+      }  
+      document.getElementById('envio').disabled = true;
+      document.getElementById("enviosugerencia").submit();  
+     
+    }
+    }
+
+
+    $('#togglePassword').click(function() {
+      console.log("ojito")
+      const eyeIcon = $(this);
+      const pwdInput = $('#pass');
+
+      pwdInput.off('blur');
+
+      if (eyeIcon.hasClass('fa-eye')) {
+        eyeIcon.removeClass('fa-eye').addClass('fa-eye-slash');
+        pwdInput.attr('type', 'text').focus();
+
+        pwdInput.one('blur', function(e) {
+          if ($(e.relatedTarget).attr('id') !== 'togglePassword') {
+            pwdInput.attr('type', 'password');
+            eyeIcon.removeClass("fa-eye-slash").addClass('fa-eye');
+          }
+        });
+
+      } else {
+        eyeIcon.removeClass('fa-eye-slash').addClass('fa-eye');
+        pwdInput.attr('type', 'password');
+      }
+    });
+
+
+    // formato dni
+    $("#dni").on({
+      "focus": function(event) {
+        $(event.target).select();
+      },
+      "keyup": function(event) {
+        $(event.target).val(function(index, value) {
+          return value.replace(/\D/g, "")
+            .replace(/([0-9])/, '$1')
+            .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ".");
+        });
+      }
+    });
+
+
+    function formatoDni(e) {
+      console.log("dni : ", (document.getElementById('dni').value).length)
+      var temp = document.getElementById('dni').value
+      temp = temp.replaceAll('.', '')
+      console.log("nuevo dni", temp)
+      document.getElementById('mdni').value = temp
+      console.log("mdni >", document.getElementById('mdni').value)
+      document.getElementById('mdni').value = temp
+    }
+   
+    function olvidoPass() {
+      window.open("/olvidoPass", "byspel", "width=600,height=600,menubar=no");
+    }
+
+    
+
+
+
+    // formato dni
+    $("#dni").on({
+      "focus": function(event) {
+        $(event.target).select();
+      },
+      "keyup": function(event) {
+        $(event.target).val(function(index, value) {
+          return value.replace(/\D/g, "")
+            .replace(/([0-9])/, '$1')
+            .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ".");
+        });
+      }
+    });
+
+    // formato Celular
+    $("#celular").on({"focus": function(event) {
+        $(event.target).select();
+      },
+      "keyup": function(event) {
+      console.log("celular");
+      var num = $(this).val().replace(/\D/g, '');
+      //$(this).val($(this).val().replace(/^(\d{2})(\d{4})(\d+)$/, "($1)$2-$3"));
+      $(this).val($(this).val().replace(/^(\d{2})(\d{4})(\d+)$/, "($1) $2-$3"));
+    }
+  });
+
+  $('.input-number').on('input', function() {
+      this.value = this.value.replace(/[^0-9,]/g, '');
+    });
+
+
+    document.getElementById('email').addEventListener('input', function() {
+      campo = event.target;
+      valido = document.getElementById('emailOK');
+
+      emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+      //Se muestra un texto a modo de ejemplo, luego va a ser un icono
+      if (emailRegex.test(campo.value)) {
+        valido.innerText = "";
+      } else {
+        valido.innerText = "email incorrecto";
+      }
+    });
+
+  </script>
+  </script>
+
+</body>
+
+</html>

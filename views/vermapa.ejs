@@ -1,0 +1,191 @@
+<%- include('includes/cabecera.ejs') %>
+<%- include('menu2.ejs') %>
+
+
+<link href="/css/bootstrap.bundle.min.js" rel="stylesheet" />
+<link href="/css/vercard.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.3.min.js"></script>
+
+<head>
+  <header>
+    <!-- Modal -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/path/to/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap CSS -->
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/register.css" rel="stylesheet" />
+    <link href="/css/loading.css" rel="stylesheet" />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- select con busqueda -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  </header>
+  <style>
+    @import url("https://unpkg.com/leaflet@1.9.4/dist/leaflet.css");
+
+    #map {
+      margin: 0 auto;
+      width: 90%;
+      min-height: 400px;
+      max-height: 500px;
+      height: 100%;
+    }
+
+    .inmobiliarialogo{
+      width: 210px;
+      height: 50px;
+    }
+    .propiedadimg{
+      width: 300px;
+      height: 300px;
+    }
+    .texto-precio{
+      font-size: 1.5rem;
+
+    }
+  </style>
+</head>
+
+<body>
+  <div style="float: center;">
+    <button type="button" id="btnverlista" onclick="verlista(1,id)"> Ver Lista </button>
+  </div>
+  <div style="width: 90%;" id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    var map;
+    var marker;
+    var mapita;
+    var L;
+
+
+    url = "/api/propiedades/"+document.getElementById("userid").value
+    console.log("servidor ->", url)
+    // const pp =
+    propiedades()
+
+    busca_localizacion()
+
+    async function propiedades() {
+      return fetch(url)
+        .then((response) => {
+          return response.json().then((data) => {
+            console.log("propiedades dentro del fetch ->", data)
+            for (let i = 0; i < data.length; i++) {
+              //L.marker([data[i].latitud, data[i].longitud], {icon: greenIcon}).addTo(map);
+              precio=data[i].precio;
+              htmlpopup='<img class="inmobiliarialogo" src="https://inmobiliari.s3.sa-east-1.amazonaws.com/' + data[i].logo + '"/>'+
+              '<img class="propiedadimg" src="https://inmobiliari.s3.sa-east-1.amazonaws.com/' + data[i].imagen + '"/>' +
+              '<p class="texto-precio" >' + data[i].moneda + ' '+ data[i].precio + '</p>' 
+              L.marker([data[i].latitud, data[i].longitud], {icon: houseIcon}).
+              bindTooltip(precio,{permanent: true, direction: 'top', offset: L.point(0, 0)}).addTo(map).bindPopup(htmlpopup);
+            }
+            return data;
+          }).catch((err) => {
+            console.log(err);
+          })
+        });
+    }
+
+    // console.log("pepe", pp);
+
+    //leo_geolocalizacion();
+    //L.marker([data[5].latitud, data[5].longitud], {icon: greenIcon}).addTo(map);
+
+    var houseIcon = L.icon({
+      iconUrl: "/img/house.png",
+ 
+
+      iconSize: [30, 30], // size of the icon
+
+    });
+
+
+    async function leo_geolocalizacion() {
+      console.log("entro en geolocalizacion")
+      await navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    }
+
+    function onSuccess(position) {
+      //alert("2 - onSucess" + position)
+      busca_localizacion(position);
+    }
+
+    function onError(error) {
+      var txt;
+      switch (error.code) {
+        case error.PERMISSION_DENIED:
+          txt = "Permiso de localizacion denegada";
+          break;
+        case error.POSITION_UNAVAILABLE:
+          txt = "Permiso de localizacion inhabilitada";
+          break;
+        case error.TIMEOUT:
+          txt = "Tiempo de espera para la localizacion agotado";
+          break;
+        default:
+          txt = "no encontro la localizacion";
+      }
+      alert(txt);
+    }
+
+    async function busca_localizacion(position) {
+      //alert("3 - busca_localizacion " + position.coords.latitude + " , " + position.coords.longitude)
+      //document.getElementById("tab3").style.display = "inline";
+
+      latitude = -34.661736053820015 // position.coords.latitude;
+      longitude = -58.6543727202665  // position.coords.longitude;
+      //console.log("busca_localizacion responsedata ", pp)
+      map = L.map("map").setView([latitude, longitude], 11);
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      }).addTo(map);
+      //L.marker([latitude, longitude], {icon: greenIcon}).addTo(map);
+      //alert("espero")
+
+      popup = L.popup();
+
+      function onMapClick(e) {
+        popup
+          .setLatLng(e.latlng)
+          .setContent(
+            e.latlng.toString() +
+            '<a href="http://www.google.com">Visit Google</a>"'
+          )
+          .openOn(map);
+        console.log(e.latlng.lat, e.latlng.lng);
+      }
+
+      map.on("click", onMapClick);
+
+      url = "/api/propiedades/0"
+      console.log("servidor ->", url)
+      fetch(url)
+        .then(response => response.json())
+        .then((responseData) => {
+          console.log("propiedades ->", responseData)
+
+        });
+    }
+    function verlista(){
+      window.location = '/home'
+    }
+  </script>
+</body>
