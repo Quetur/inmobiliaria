@@ -155,11 +155,11 @@ router.get('/api/propiedades/:id',async (req,res)=>{
   }
 
   //console.log("filtro", filtro)
-  let linea = 'SELECT s.dni as dni,x.id_inmueble as id_inmueble, x.nombre, x.apellido, x.calificacion, x.celular, x.codigopostal, x.imagen, l.descripcion as localidad, p.descripcion as provincia, c.descripcion as oficio, x.presentacion, FORMAT(x.precio,"C","En-Us") as precio, x.moneda, s.imagen as logo, x.latitud, x.longitud from inmueble x INNER JOIN categoria c on x.id_categoria = c.id_categoria INNER JOIN localidad l on l.id_localidad = x.id_localidad INNER JOIN provincia p on p.id_provincia = x.id_provincia INNER JOIN inmobiliaria s on s.dni = x.id_inmobiliaria' +  filtro
-  //console.log("linea",linea)
+  let linea = 'SELECT s.dni as dni,x.id_inmueble as id_inmueble, x.nombre, x.apellido, x.calificacion, x.celular, x.codigopostal, x.imagen, l.descripcion as localidad, p.descripcion as provincia, c.descripcion as oficio, x.presentacion, FORMAT(x.precio,"C","En-Us") as precio, x.moneda, s.imagen as logo, x.latitud, x.longitud from inmueble x INNER JOIN categoria c on x.id_categoria = c.id_categoria INNER JOIN localidad l on l.id_localidad = x.id_localidad INNER JOIN provincia p on p.id_provincia = x.id_provincia INNER JOIN inmobiliaria s on s.dni = x.id_inmobiliaria' +  filtro + ` ORDER BY x.precio ASC `
+  console.log("linea",linea)
   try {
     const [filas] = await pool.query(linea);
-    //console.log("propiedades", filas);
+    console.log("propiedades", filas);
     res.send(filas);
   } catch (error) {
     {
