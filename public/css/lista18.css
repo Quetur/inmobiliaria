@@ -17,7 +17,7 @@
 
 
 .container {
-
+  font-size: 10px;
 }
 
 .tablita {
@@ -109,11 +109,13 @@
 
 
 .container-center {
-  /*justify-content: center;
+  /*
+  justify-content: center;
   background-color: red;
-  /*max-width: 1000px;
+  max-width: 1000px;
   width: 95%;
-  margin: 20px;*/
+  margin: 20px;
+  */
 }
 
 

@@ -34,14 +34,14 @@
   <script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.js"></script>
 -->
 <style>
-
+/*
 div.dt-container div.dt-search input{
   margin-left: 5em;
   padding-left: 1rem;
 }
 
 
-div.dt-search label{
+iv.dt-search label{
   margin-left: 85px;
   margin-top: 5px;
   padding-left: 2rem;
@@ -49,7 +49,7 @@ div.dt-search label{
   height: 30px;
   text-align: right;
 }
-
+*/
 </style>
 <div id="fondo" class="masthead ">
   <div class="container container-center  ">
@@ -295,7 +295,8 @@ div.dt-search label{
         info: "Mostrando de _START_ a _END_ de un total de _TOTAL_ registros",
         infoEmpty: "Ningún usuario encontrado",
         infoFiltered: "(filtrados desde _MAX_ registros totales)",
-        search: "Buscar:",
+        search: "",
+        searchPlaceholder: "Buscar registros...",
         loadingRecords: "Cargando...",
         paginate: {
           first: "Pri",
