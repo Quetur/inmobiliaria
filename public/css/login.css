@@ -320,9 +320,9 @@
 
 
   
-.table .fa {
-  font-size: 2.5rem;
-  text-align: center;
+.label1 {
+  font-size: 12px;
+  text-align: left;
 }
 .cards .fa {
   font-size: 7.5rem;
@@ -333,6 +333,3 @@ ul.unrenglon li {
           display: inline;
     }
 
-.divboton {
-  text-align: center;
-}

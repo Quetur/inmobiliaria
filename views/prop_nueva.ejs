@@ -260,8 +260,8 @@
 
                 </table>
                 <input type="text" name="localizacion" id="localizacion" hidden></input>
-                <input type="text" name="lati" id="lati"></input>
-                <input type="text" name="longi" id="longi"></input>
+                <input type="text" name="lati" id="lati" hidden></input>
+                <input type="text" name="longi" id="longi" hidden></input>
               </div>
               <div style="float: right;">
                 <button type="button" id="prevBtn2" onclick="Prev(2,id)">
@@ -272,8 +272,6 @@
                 </button>
               </div>
             </div>
-
-
 
             <div id="tab3">
               <h2 class="fs-subtitle subti" style="text-decoration: underline;">Ubicación de la Propiedad</h2>
@@ -300,7 +298,7 @@
                 <table>
                   <tr>
                     <td id="tdlocalidad">
-                      <select name="localidad" id="localidad" type="text" class="mb3-3 form-select select2" onchange="myFunction(this)" style="font-size: 15px !important;" disabled>
+                      <select name="localidad" id="localidad" type="text" class="mb3-3 form-select select2" onchange="myFunction(this)" style="font-size: 15px !important;" >
                         <option value="" style="font-size: 15px !important; width: 200px;">Seleccione localidad</option>
                       </select>
                     </td>
@@ -309,7 +307,7 @@
                         <div class="emoji"></div>
                       </div>
                     </td>
-                    <td style="width: 65%;" class="material-textfield">
+                    <td style="width: 65%;" class="material-textfield" hidden >
                       <input id="locali" name="locali" type="text" class="form-control" placeholder="Calle">
                       <label id="label_locali" for="locali" class="form-label">Localidad</label>
                     </td>
@@ -549,7 +547,7 @@
       //alert("2 - onSucess" + position)
       busca_localizacion(position)
 
-      llena_locali(latitude, longitude)
+    //  llena_locali(latitude, longitude)
 
     }
 
@@ -606,7 +604,7 @@
         console.log(e.latlng.lat, e.latlng.lng)
         document.getElementById('lati').value = e.latlng.lat
         document.getElementById('longi').value = e.latlng.lng
-        llena_locali(e.latlng.lat, e.latlng.lng)
+       // llena_locali(e.latlng.lat, e.latlng.lng)
       }
 
       map.on('click', onMapClick);
@@ -634,6 +632,7 @@
         document.getElementById('pais').value = json.country_code.toUpperCase()
         console.log("localidad", json.country_code.toUpperCase() + '-' + json.state_code.toUpperCase())
         document.getElementById('provincia').value = json.country_code.toUpperCase() + '-' + json.state_code.toUpperCase()
+        alert(json.country_code.toUpperCase() + '-' + json.state_code.toUpperCase())
         document.getElementById('cod_provincia').value = json.country_code.toUpperCase() + '-' + json.state_code.toUpperCase()
         console.log("localidad buscada", json.localidad.toUpperCase())
         document.getElementById('locali').value = json.localidad.toUpperCase()
@@ -646,7 +645,7 @@
         //$('localidad').prop('disabled', true);
         // document.getElementById('localidad').style.visibility = 'hidden' //select2-localidad-container
         // document.getElementById("tdlocalidad").className = "tdhidden";
-        document.getElementById('tdlocalidad').hidden = true
+        document.getElementById('tdlocalidad') = true
         geoloc.cod_prov = json.country_code.toUpperCase() + '-' + json.state_code.toUpperCase()
         pongo_localidad()
       }
@@ -669,6 +668,7 @@
     }
     */
 
+    /*
     $('input[type=radio][name=radio_geoloc]').change(function() {
       //alert("cambio radio" + this.value)
       console.log("cambio radio", this.value)
@@ -698,6 +698,7 @@
         llena_locali(latitude, longitude)
       }
     });
+  */
 
     function verifica_dire() {
       //alert("busca_dire")
