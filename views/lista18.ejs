@@ -60,36 +60,45 @@ iv.dt-search label{
     <- Aplicar Filtros</img>
   -->
 
- 
-    <div class="barra" style="width: 500px;">
-      <!--
-      <div class="form-floating">
-        <select class="form-select" name="select_provi" id="select_provi" style="width: 180px;" onchange="functionProv(this)"></select>
-        <label for="select_provi" class="form-label" style="font-size:larger; text-decoration: underline;"> Provincia </label>
-      </div>
-  -->
-      <div class="floating" >
-      <!-- <label for="select_localidad" class="form-label" style="font-size:larger; text-decoration: underline;">Localidad</label> -->
-        <select class="form-select" name="select_localidad" id="select_localidad" style="width: 180px; height: 35px;"> </select>
-      </div>
-      
-      <div class="divboton" style="align-items:right ;">
-        <button style="margin-left: 2rem;" type="button" id="vermapa" onclick="vermapa()">
-          Ver en Mapa
-        </button>
+    <table>
+      <div >
+      <tr class="barra" style="width: 500px;">
         
-      </div>
-      
-
-      <!--
-      <div class="form-floating">
-        <select class="form-select" name="select_oficio" id="select_oficio"></select>
-        <label for="select_oficio" class="form-label" style="font-size:larger; text-decoration: underline;">Oficio</label>
-        </select>
-      </div>
+          <td style="width: 300px; text-align: center; padding-left: 40px;">
+          <!--
+          <div class="form-floating">
+            <select class="form-select" name="select_provi" id="select_provi" style="width: 180px;" onchange="functionProv(this)"></select>
+            <label for="select_provi" class="form-label" style="font-size:larger; text-decoration: underline;"> Provincia </label>
+          </div>
       -->
-    </div>
+          <div class="floating">
+            <!-- <label for="select_localidad" class="form-label" style="font-size:larger; text-decoration: underline;">Localidad</label> -->
+            <select class="form-select" name="select_localidad" id="select_localidad" style="width: 180px; height: 35px;"> </select>
+          </div>
+        </td>
+        <td style="width: 200px; align-items:right ;">
+          <div class="divboton" style="align-items:right ;">
 
+            <img type="button" id="vermapa" style="width: 80px; height: 50px; " src="/img/mapa.png" onclick="vermapa()"></a>
+            <!-- <button style="margin-left: 2rem;" type="button" id="vermapa" onclick="vermapa()">-->
+
+            </button>
+
+          </div>
+
+
+          <!--
+          <div class="form-floating">
+            <select class="form-select" name="select_oficio" id="select_oficio"></select>
+            <label for="select_oficio" class="form-label" style="font-size:larger; text-decoration: underline;">Oficio</label>
+            </select>
+          </div>
+          -->
+        </div>
+      </td>
+      </tr>
+    </div>
+  </table>
     <!-- <table id="example" class="table table-sm table-hover cards " style="width: 100%;">  -->
     <table id="example" class="table table-sm table-hover  cards " style="width: 100%; margin-left: 0px;">
       <thead>
@@ -667,18 +676,21 @@ iv.dt-search label{
 
   }
   function vermapa() {
+    
+   
     Swal.fire({
       title: 'Procesando !!!...',
         text: 'gracias ....',
         showConfirmButton: false,
-        timer: 1000
+        timer: 1000,
     }).then(() => {
       var filtro=document.getElementById("m_inmobiliCod").value
+
       if (document.getElementById("m_inmobiliCod").value >""){
         filtro=document.getElementById("m_inmobiliCod").value
       }
       console.log("filtro",filtro)
-      //alert(filtro)
+      
       window.location = '/vermapa/'+filtro
     })
   }
