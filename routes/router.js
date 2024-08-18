@@ -170,7 +170,7 @@ router.get('/api/propiedades/:id',async (req,res)=>{
 
 router.get('/vercard/:id',async (req,res)=>{
   console.log("entro en vercard",  [req.params.id] )
-  console.log(eeee)
+  //console.log(eeee)
   try {
     const [inmueble] = await pool.query("SELECT x.id_inmobiliaria as id_inmobiliaria, x.id_inmueble as id_inmueble, x.calle, x.numero, x.imagen, l.descripcion as localidad, p.descripcion as provincia, x.presentacion, i.imagen as logo_inmobiliaria, i.telefono as tel_inmobiliaria from inmueble x INNER JOIN categoria c on x.id_categoria = c.id_categoria INNER JOIN localidad l on l.id_localidad = x.id_localidad INNER JOIN provincia p on p.id_provincia = x.id_provincia INNER JOIN inmobiliaria i on i.dni = x.id_inmobiliaria where x.id_inmueble = ?", [req.params.id])
     //SELECT x.dni, x.nombre, x.apellido, x.calle, x.numero, l.descripcion as loc, l.id_localidad as id_localidad, p.descripcion as provincia, l.id_localidad as id_provincia, x.imagen, x.celular, x.presentacion FROM usuario x INNER JOIN localidad l on x.id_localidad = l.id_localidad INNER JOIN provincia p on x.id_provincia = p.id_provincia where x.dni= ? ;",[req.params.id]);
