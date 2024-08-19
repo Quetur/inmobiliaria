@@ -73,11 +73,11 @@ iv.dt-search label{
       -->
           <div class="floating">
             <!-- <label for="select_localidad" class="form-label" style="font-size:larger; text-decoration: underline;">Localidad</label> -->
-            <select class="form-select" name="select_localidad" id="select_localidad" style="width: 180px; height: 35px;"> </select>
+            <select class="form-select" name="select_localidad" id="select_localidad" style="width: 180px; height: 35px; margin-left: 10px;"> </select>
           </div>
         </td>
         <td style="width: 200px; align-items:right ;">
-          <div class="divboton" style="align-items:right ;">
+          <div class="divboton" style="align-items:right; padding-right: 50px;">
 
             <img type="button" id="vermapa" style="width: 80px; height: 50px; " src="/img/mapa.png" onclick="vermapa()"></a>
             <!-- <button style="margin-left: 2rem;" type="button" id="vermapa" onclick="vermapa()">-->
@@ -362,8 +362,8 @@ iv.dt-search label{
             return (function(data, type, row) {
 
               return ' <div class="primer_renglon">' +
-                '<div class="nom"><img class="logo_card" src="img/'+row.logo+'"></img> </div>' +
-                '<div class="calif">' +row.localidad + ' </div>' +
+                '<div class="nom"><img class="logo_card" src="https://inmobiliari.s3.sa-east-1.amazonaws.com/'+row.logo+'" style=" color: red;" >Versión Demo</img></div>' +
+                '<div class="calif"> ' +row.localidad + ' </div>' +
                 
                 '</div>'
 
