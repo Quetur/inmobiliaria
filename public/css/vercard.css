@@ -1,3 +1,19 @@
+/*#popup {
+  width: 50vw;
+  height: 30vh;
+  background: #9152f8;
+  border: 5px solid #000;
+  border-radius: 25px;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+  box-shadow: #64686e 0px 0px 3px 3px;
+  -moz-box-shadow: #64686e 0px 0px 3px 3px;
+  -webkit-box-shadow: #64686e 0px 0px 3px 3px;
+  position: relative;
+  top: 150px;
+  left: 75px; 
+}
+*/
 .img_whatsapp {
     width: 60px;
     height: 60px;
@@ -17,13 +33,13 @@
     justify-content: space-between;
     position: relative;
     padding-right: 10px;
-    width: 25rem;
+    width: 700px;
     height: 50px;
   }
 
   #comentario{
     height: 80px; 
-    width: 790px; 
+    width: 50px; 
     align-items: center;
     font-size: 2rem;
     box-shadow: 2px 2px 8px 4px #d3d3d3d1;
@@ -60,4 +76,11 @@
 
   tr.border_bottom td {
     border-bottom: 1px solid black;
+  }
+
+  @media only screen and (max-width: 600px) {
+    #popup {
+        width: 200px;
+        height: 250px;
+     }
   }

@@ -208,6 +208,13 @@ router.get('/vercard/:id',async (req,res)=>{
   }
 })
 
+router.get('/vercard2',async (req,res)=>{
+  console.log("entro en vercard2" )
+  res.render('vercard2');
+  
+})
+
+
 router.get('/vermapa/:id',async (req,res)=>{
   console.log("entro en vermapa",[req.params.id] )
   try {

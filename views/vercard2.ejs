@@ -2,71 +2,15 @@
 <link href="/css/vercard.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.3.min.js"></script>
+<head>
 
+</head>
 <body>
-    <div id="popup" >
-      <div class="primer_renglon">
-        <table style="border-bottom: thick black;" class="formato">
-          <tr>
-            <td>
-              <div class="nom">
-                <img class="logo_card" src="https://inmobiliari.s3.sa-east-1.amazonaws.com/<%= inmueble[0].logo_inmobiliaria %>"></img>
-              </div>
-            </td>
-            <td style="width: 400px;">
-              <h2 class="fs-subtitle subti" style="font-size: 2.5rem;">Tel: <%= inmueble[0].tel_inmobiliaria  %> </h2>
-            </td>
-            <td width="50px" style="padding-right: 0px; text-align: right;">
-              <input type="image" style="width: 80px; height: 50px;" src="/img/close2.png" onclick="window.close()">
-            </td>
-          </tr>
-        </table>
-      </div>
-      <br>
+  <div id="popup">
+  <h1><label for="">hola mundo</label>
 
-    </div>
-    <table style="border-bottom: thick black;" class="formato">
-      <tr class="linea formato">
-        <td style="padding: 20px;" rowspan="4" class="linea">
-          <img class="grid-img" style="width: 700px;height: 600px;" src="https://inmobiliari.s3.sa-east-1.amazonaws.com/<%= inmueble[0].imagen %> " />'
-        </td>
-      </tr>
-
-      <tr> </tr>
-      <tr> </tr>
-      <tr class="border_bottom"> </tr>
-
-    </table>
-
-    <tr>
-      <td colspan="2"> <label style="font-size: 2rem;"> <%= inmueble[0].calle +' '+inmueble[0].numero  %> </label> </td>
-    </tr>
-    <tr>
-      <td colspan="2"> <label style="font-size: 2rem;"> <%= inmueble[0].localidad +'  -   '+inmueble[0].provincia %> </label> </td>
-    </tr>
-
-    </tr>
-    </thead>
-    <% califica.forEach((cali) =>{ %>
-    <tr class="titulo border_bottom">
-      <!--<td style="width: 20px;"><%= cali.id_inmuebleOrigen %></td> -->
-      <!--<td style="width: 200px;"><%= cali.id_inmuebleDestino %> </td>-->
-      <td style="width: 600px; font-size: 1.5rem;" class="formato"><%= cali.nota %> </td>
-      <td style="width: 100px; font-size: 1.5rem;" class="formato"><%= cali.nombre_origen %> </td>
-      <td style="width: 125px; text-align: rights">
-        <div style="display: flex; flex-wrap: wrap; justify-content: right;">
-          <!--<input class="sinborde" style="width: 20px; font-size: 1.5rem;" value="<%= cali.calificacion %>"> </input> -->
-          <% for (let i=0; i<cali.calificacion ; i++){ %>
-
-          <img class="img_estrellita" src="/img/m_estrella2.png"></img>
-
-          <%  } %>
-        </div>
-      </td>
-    </tr>
-    <% }); %>
-    </table>
-    </div>
+  </h1>
+</div>
 </body>
 
 <script>

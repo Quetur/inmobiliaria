@@ -81,7 +81,7 @@ export const login = async (req, res) => {
             alertMessage: "¡LOGIN CORRECTO!",
             alertIcon: "success",
             showConfirmButton: false,
-            timer: 4000,
+            timer: 1000,
             ruta: "home",
             user: usr,
             dni: dni,

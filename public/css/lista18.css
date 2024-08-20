@@ -9,7 +9,7 @@
   /*text-align: center;*/
   background-color: #f3f3f3;
   border: 1px solid #e7e7e7;
-
+  cursor: context-menu;
 
   padding-top: 100px;
 }
@@ -28,23 +28,28 @@
   background-color: red;
 }
 
+
+
 .barra {
-  display: flex;
-  width: calc(100% - 100px);
-  align-items: center;
-  /*margin-top: -5px;
+ 
+  /*display: flex;*/
+  width: calc(100% - 200px);
+  /*align-items: center;
+  /*margin-top: -5px;*/
   padding-top: 5px;
   margin-left: -15px !important;
-  */
-  flex-direction: row;
+  
+  /*flex-direction: row;*/
   flex-wrap: wrap;
   background-color: #1b5c70;
-  justify-content:space-around ;
-  justify-content: center;
+  /*justify-content:space-around ;
+  /*justify-content: center;
   /*margin-left: calc(100% / 2 - 300px);*/
 
- 
+}
 
+.select-localidad{
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -53,14 +58,15 @@
     padding-left: 23px;
 
 
-    display: flex;
-    /* flex-direction: column;*/
-     flex-wrap: wrap;
+   /* display: flex;
+     flex-direction: column;
+     flex-wrap: wrap;*/
      justify-content: center;
 
   }
   .barra{
-    display: flex;
+   /* display: flex;*/
+    cursor: context-menu;
     width: calc(100% - 500px);
     align-items: center;
 
@@ -75,6 +81,7 @@
   }
   .tbody{
     width: 500px;
+    cursor: context-menu;
   }
   table#example{
      /* 510 80*/
@@ -336,5 +343,35 @@ ul.unrenglon li {
     }
 
 .divboton {
+  /*padding-left: 25px;*/
+  margin-left: 20px;
+  padding-right: 25px;
+  margin-right: 25px;
+  width: 120px;
+  border: 1px solid #1f1f1f;
+  border-radius: 25px;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+  box-shadow: #64686e 0px 0px 3px 3px;
+  -moz-box-shadow: #64686e 0px 0px 3px 3px;
+  -webkit-box-shadow: #64686e 0px 0px 3px 3px;
+  /*text-align: center;
+  //align-items: center;*/
+}
+
+.divtercerrenglon {
+  
   text-align: center;
+  align-items: center;
+}
+
+.divboton2 {
+  border-radius: 25px;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+  box-shadow: #64686e 0px 0px 3px 3px;
+  -moz-box-shadow: #64686e 0px 0px 3px 3px;
+  -webkit-box-shadow: #64686e 0px 0px 3px 3px;
+  text-align: center;
+  align-items: center;
 }

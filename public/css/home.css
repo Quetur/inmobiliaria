@@ -90,7 +90,7 @@ border-color: inherit;
   padding-left: 35px;
   padding-top: 12px;
   margin-bottom: 12px;
-  cursor: pointer;
+  cursor: context-menu;
   font-size: 18px;
   -webkit-user-select: none;
   -moz-user-select: none;

@@ -64,7 +64,7 @@ iv.dt-search label{
       <div >
       <tr class="barra" style="width: 500px;">
         
-          <td style="width: 300px; text-align: center; padding-left: 40px;">
+          <td style="width: 200px; text-align: center">
           <!--
           <div class="form-floating">
             <select class="form-select" name="select_provi" id="select_provi" style="width: 180px;" onchange="functionProv(this)"></select>
@@ -73,13 +73,14 @@ iv.dt-search label{
       -->
           <div class="floating">
             <!-- <label for="select_localidad" class="form-label" style="font-size:larger; text-decoration: underline;">Localidad</label> -->
-            <select class="form-select" name="select_localidad" id="select_localidad" style="width: 180px; height: 35px; margin-left: 10px;"> </select>
+            <select class="form-select select-localidad" name="select_localidad" id="select_localidad" style="width: 180px; height: 35px; margin-left: 10px;"> </select>
           </div>
         </td>
-        <td style="width: 200px; align-items:right ;">
-          <div class="divboton" style="align-items:right; padding-right: 50px;">
+        <td style="width: 200px; align-items:center ; text-align: center;
+  align-items: center; ">
+          <div class="divboton" >
 
-            <img type="button" id="vermapa" style="width: 80px; height: 50px; " src="/img/mapa.png" onclick="vermapa()"></a>
+            <img type="button" id="vermapa" style="width: 80px; height: 50px;padding-left: 25px; " src="/img/mapa.png" onclick="vermapa()"></a>
             <!-- <button style="margin-left: 2rem;" type="button" id="vermapa" onclick="vermapa()">-->
 
             </button>
@@ -94,13 +95,13 @@ iv.dt-search label{
             </select>
           </div>
           -->
-        </div>
+      </div>
       </td>
       </tr>
     </div>
   </table>
     <!-- <table id="example" class="table table-sm table-hover cards " style="width: 100%;">  -->
-    <table id="example" class="table table-sm table-hover  cards " style="width: 100%; margin-left: 0px;">
+    <table id="example" class="table table-sm table-hover  cards " style="width: 100%; margin-left: 0px;cursor: context-menu;">
       <thead>
         <tr>
           <th></th>
@@ -436,8 +437,8 @@ iv.dt-search label{
         {
           class: "vercard",
           render: function(data, type, row, meta, full) {
-
-            data = '<div class="divboton"><button name="masinfo" style="width: 150px; background-color: #17bdff; font-weight: bold; border-radius: 7px;" value="Mas info..." type="button" id="' + row.id_inmueble + '">Mas info...</button></div>'
+            
+            data = '<div class="divtercerrenglon" ><button class="divboton2" name="masinfo" style="width: 150px; background-color: #17bdff; font-weight: bold; border-radius: 7px;" value="Mas info..." type="button" id="' + row.id_inmueble + '">Mas info...</button></div>'
 
 
             {
@@ -515,11 +516,12 @@ iv.dt-search label{
           var id = (e.target.id);
           console.log("id :", id);
           var linea = "/vercard/" + id;
+          var linea2 = "/vercard2";
           console.log("linea ", linea);
 
-          let params = `scrollbars=no,resizable=no,url=no,strWindowFeatures=no,location=no,toolbar=no,menubar=no,status=no,width=800px,height=900px`;
+          let params = `scrollbars=no,resizable=no,url=no,strWindowFeatures=no,location=no,toolbar=no,menubar=no,status=no,width=550,height=550`;
 
-          window.open(linea, 'Popup', params);
+          window.open(linea,'Popup', params);
         });
 
         function abremodal() {
