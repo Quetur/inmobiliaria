@@ -41,7 +41,7 @@ body {
 .container {
   display: block;
   position: relative;
-  padding-left: 35px;
+  padding-left: 30px !important;
   margin-bottom: 12px;
   cursor: pointer;
   font-size: 22px;
@@ -51,6 +51,7 @@ body {
   user-select: none;
   /*width: 500px;*/
   max-width: 500px !important;
+  padding-top: 15px
 }
 
 
