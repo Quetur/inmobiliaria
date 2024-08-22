@@ -3,75 +3,12 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="Tu Inmobiliaria" content="
-  Agricultor
-Alambrador
-Albañil
-Alfarería
-Arenador
-Barbero
-Bachero
-Camarero
-Camionero
-Carpintero
-Chef
-Chofer
-Cocinero
-Colchonero
-Cosechador
-Electricista
-Maestra Particular
-Fontanero
-Fletero
-Grabado
-Herrero
-Jardinero
-Joyero
-Leñador
-Letrista
-Limpiabotas
-Maestro mayor de obras
-Manicura
-Matricero
-Mecánico
-Modista
-Molinero
-Orfebre
-Oberlok
-Pastor
-Peletería
-Coifiure
-Pescador
-Pintor
-Plomero
-Repostería
-Rotulista
-Sembrador
-Taxidermia
-Techista
-Tintorero
-Tornero
-Trabajadora doméstica
-Vendedor ambulante
-Yesero
-Zapatero
-Depiladora
-Podologa
-Profesora Ingles
-Profesora Frances
-Profesor Matematica
-Profesor Fisica
-Decorador Interior
-Paisajista
-Desarrollo Web
-Programador
-Testing
-" autor="Jesus Rosales" />
+  <meta name="Tu Inmobiliaria" content="" autor="Jesus Rosales" />
 
   <title>Tu Inmobiliaria</title>
   <link rel="icon" href="../img/logo.ico">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <!-- <link rel="stylesheet" href="fonts.css">--> 
+  <!-- <link rel="stylesheet" href="fonts.css">-->
   <script src="https://code.jquery.com/jquery-latest.js"></script>
   <link href="/css/menu2.css" rel="stylesheet">
   <!-- <link href="css/navbar.css" rel="stylesheet">-->
@@ -81,16 +18,16 @@ Testing
   <nav>
     <ul>
 
-      <li class="submenu">
+      <li class="submenu"  style="margin-top: 5px; margin-bottom: 5px;" >
 
         <% if(user){ %>
 
-        <img style="width: 150px; background-color: white;" src="https://inmobiliari.s3.sa-east-1.amazonaws.com/<%= logo %>">
+        <img style="width: 150px; margin-left: -25px;" id="imglogo"  src="https://inmobiliari.s3.sa-east-1.amazonaws.com/<%= logo %>">
         <input id="logo_inmo" value="<%= logo %>"hidden></input>
         <input id="userid" value="<%= userid %>" hidden></input>
         <input id="m_inmobili" hidden></input>
         <input id="m_inmobiliCod"  value="<%= userid %>" hidden ></input>
-        <ul class="children">
+        <ul class="children"  style="width: 300px; margin-left: -25px;">
           <li><a href="/prop_nueva/<%= user.dni %>">Nueva Propiedad <span class="icon-dot"></span></a></li>
           <!-- <li><a href="/editar/<%= user.dni %>">Calificar otro usuario<span class="icon-dot"></span></a></li>
           <li><a href="/editar/<%= user.dni %>">Ver mis calificaciones<span class="icon-dot"></span></a></li>-->
@@ -98,12 +35,17 @@ Testing
 
           <!--<li><a href="/editar">Editar su perfil</a></li>-->
         </ul>
+        <li style="width: 180px !important; font-size: 12px;">&nbsp &lt- Pulsa aqui para mas opciones</li>
     
       <% }  else{ %>
         <input id="userid" value="0"  hidden></input>
         <input id="m_inmobili" hidden></input>
         <input id="m_inmobiliCod"  value="0" hidden  ></input>
-        <img id="imglogo" style="width: 150px; margin-left: -20px;" src="/img/logo.png">
+        <table>
+          <tr>
+            <td style="width: 150px !important;">
+              <img style="width: 150px; margin-left: -25px;" id="imglogo"  src="/img/logo.png">
+            </td>
         <!-- 
         <li><a href=""><span class="icon-mail"></span>Propiedades</a></li>
         <li><a href=""><span class="icon-mail"></span>Subastas</a></li>
@@ -112,18 +54,28 @@ Testing
         </li>
         <li><a href="/contacto"><span class="icon-mail"></span>Contacto</a></li>
         -->
-        <li style="width: 105px;"><a id="acerca" style="width: 105px; font-size: 16px;" href="/acercade"><span class="icon-mail"></span>Acerca de</a></li>
-        
-        <li><a  id="ingresar" style="width: 100px; font-size: 16px;"href="/login"> Ingresar </a></li>
-        <% } %>
 
+            <td style="width: 95px !important;">
+              <li ><a id="acerca" style="width: 95px; font-size: 16px; margin-left: -10px;" href="/acercade">Acerca de</a></li>
+            </td>
+            <td style="width: 130px !important; font-size: 16px; margin-left: -10px;">
+              <div class="divbotonmenu" >
+                <li><a  id="ingresar" href="/login" style=" font-size: 16px;margin-left: -10px; width: 120px !important;"> Ingresar <img type="button" style="width: 30px; " src="/img/ingreso2.png"></a></li>
+              </div>
+            </td>
+          </tr>
+        </table>
+      <% } %>
+      </li>
   </nav>
+
 
 
 
 
   <script>
     var contador = 1;
+
     function main() {
       $('.menu_bar').click(function() {
         if (contador == 1) {
@@ -147,13 +99,13 @@ Testing
     $(document).ready(main);
     dni = 0
     mnombre = ""
- 
-    if  (sessionStorage.getItem("dni")!==null){
-       document.getElementById('m_inmobili').value = sessionStorage.getItem("nombre");
-       document.getElementById('m_inmobiliCod').value = sessionStorage.getItem("dni");
+
+    if (sessionStorage.getItem("dni") !== null) {
+      document.getElementById('m_inmobili').value = sessionStorage.getItem("nombre");
+      document.getElementById('m_inmobiliCod').value = sessionStorage.getItem("dni");
     }
     console.log(" menu dni ", dni, mnombre)
-  
+
     if ((dni > 1) && (mnombre.length == 0)) {
       url = "/api/usuario/" + dni
       console.log("entro menu2 servidor ->", url)

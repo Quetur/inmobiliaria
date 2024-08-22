@@ -36,7 +36,7 @@ header nav ul li {
 }
 
 header nav ul li:hover {
-	background:#1b5c70;
+	/*background:#1b5c70;*/
 	color: white !important; 
 }
 
@@ -51,7 +51,7 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-	background:#1b5c70;
+	/*background:#1b5c70;*/
 	color: white !important; 
 }
 
@@ -205,3 +205,18 @@ header nav ul li .caret {
 	background-size: cover;
 	
   }
+
+  .divbotonmenu {
+    padding-left: 25px;
+
+    margin-right: 25px;
+    width: 140px;
+    border: 1px solid #1f1f1f;
+    border-radius: 25px; 
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    box-shadow: #64686e 0px 0px 3px 3px;
+    -moz-box-shadow: #64686e 0px 0px 3px 3px;
+    -webkit-box-shadow: #64686e 0px 0px 3px 3px;
+    background-color: #267086;
+}

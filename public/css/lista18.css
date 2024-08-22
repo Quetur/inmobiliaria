@@ -259,6 +259,9 @@
 
 .nom{
   width: 250px;
+  font-weight: bold;
+  color:#eb0000;
+  font-size: 12px;
 }
 
 .calif{
@@ -398,6 +401,7 @@ ul.unrenglon li {
   box-shadow: #64686e 0px 0px 3px 3px;
   -moz-box-shadow: #64686e 0px 0px 3px 3px;
   -webkit-box-shadow: #64686e 0px 0px 3px 3px;
+  background-color: #267086;
   /*text-align: center;
   //align-items: center;*/
 }
