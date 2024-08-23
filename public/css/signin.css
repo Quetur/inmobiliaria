@@ -1,7 +1,12 @@
 html,
 body {
   height: 100%;
-}
+
+    background-image: radial-gradient(#fff, #09f);
+    height: 100vh;
+    margin: 0;
+  }
+
 
 body {
   display: inherit;
